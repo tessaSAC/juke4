@@ -1,0 +1,16 @@
+<div class="well">
+	<form name="playlistInputForm" class="form-horizontal">
+		<fieldset>
+			<legend>Add a Playlist</legend>
+			<div class="form-group">
+				<label class="col-xs-2 control-label">Playlist Name</label>
+				<div class="col-xs-10">
+					<input name="playlistNameInput" ng-model="playlistInput" ng-maxlength="16" type="text" class="form-control" required />
+				</div>
+			</div>
+			<p ng-show="playlistInputForm.playlistNameInput.$error.required && playlistInputForm.playlistNameInput.$touched">You must name your playlist!</p>
+			<p ng-show="playlistInputForm.playlistNameInput.$error.maxlength">Your playlist name cannot be longer than 16 characters!</p>
+			<button ng-disabled="playlistInputForm.$invalid" ng-click="createPlaylist(playlistInput)" type="submit" class="btn">Create a new playlist!</button>
+		</fieldset>
+	</form>
+</div>
