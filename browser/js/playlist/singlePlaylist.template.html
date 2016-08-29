@@ -1,0 +1,38 @@
+<div>
+	<h3>{{ singlePlaylist.name }}</h3>
+	<table class='table' ng-show="singlePlaylist.songs.length">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Artists</th>
+				<th>Genres</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="song in singlePlaylist.songs" ng-class="{active: song === getCurrentSong()}">
+				<td>
+					<button class="btn btn-default btn-xs" ng-click="toggle(song)">
+						<span class="glyphicon" ng-class="{ 'glyphicon-pause': isPlaying(song), 'glyphicon-play': !isPlaying(song) }"></span>
+					</button>
+				</td>
+				<td>{{ song.name }}</td>
+				<td><span ng-repeat="artist in song.artists">{{ artist.name }}{{ $last ? '' : ',' }}</span></td>
+				<td>{{ song.genres.join(', ') }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<small ng-hide="playlist.songs.length">No songs.</small>
+
+	<hr>
+
+	<h4>Add to Playlist!!!!!!!!!</h4>
+	<label>
+		Song
+		<select name="theFormThatAddsTheSongs" ng-model="songsForPlaylist" ng-options="song.name for song in songs" required>
+			<option value="">Song to add</option>
+		</select>
+		<button ng-disabled="theFormThatAddsTheSongs.$invalid" ng-click="addSong(singlePlaylist.id, songsForPlaylist)" type="submit" class="btn btn-success">Add to playlist!!!!!!!</button>
+	</label>
+
+</div>

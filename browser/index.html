@@ -42,6 +42,7 @@
           <hr>
           <section>
             <h4 class="text-muted">PLAYLISTS</h4>
+            <p name="" ng-repeat="playlist in allPlaylists"><a ui-sref="singlePlaylist({playlistId: playlist.id})">{{ playlist.name }}</a></p>
             <p>
               <a ui-sref="newPlaylist" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
             </p>
